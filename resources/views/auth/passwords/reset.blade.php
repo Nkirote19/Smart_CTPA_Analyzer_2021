@@ -51,8 +51,8 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-orange mt-2 text-uppercase" style="width:150px; margin-left: -40px;">
-                            {{ __('Reset Password') }}
+                        <button type="submit" class="btn btn-orange text-white mt-2 text-uppercase" style="width:150px; margin-left: -40px;">
+                            <i class="fas fa-user-lock"></i> {{ __('Reset Password') }}
                         </button>
                     </div>
                 </div>

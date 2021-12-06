@@ -1,26 +1,19 @@
 @extends('layouts._master_layout') 
 
 @section('main_content')
-<div id="app" class="main-img"> 
-    <nav class="navbar navbar-expand-md auth-page-header shadow-sm">
-        <div class="container">
-            <a class="page-logo-link press-scale-down d-flex align-items-center" href="{{ url('/') }}">
-                <img src= "{{ asset('img/logo-v5.jpeg') }}" alt="Smart CTPA Analayzer" aria-roledescription="logo" style="width: 70px; height: 60px;">
-                <span class="page-logo-text mr-1 logo-text">Smart CTPA Analyzer</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
+<div class="page-wrapper auth">
+    <div class="page-inner background-color-light">
+        <div class="page-content-wrapper bg-transparent m-0">
+            <div class="height-10 w-100 shadow-lg px-4 auth-page-header">
+                <div class="d-flex align-items-center container p-0">
+                    <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9 border-0">
+                        <a href="" class="page-logo-link press-scale-down d-flex align-items-center">
+                             <img src= "{{ asset('img/logo-v5.jpeg') }}" alt="Smart CTPA Analayzer" aria-roledescription="logo" style="width: 70px; height: 60px;">
+                            <span class="page-logo-text mr-1 logo-text">Smart CTPA Analyzer</span>
+                        </a>
+                    </div>
+                    
                     @guest
                         <!-- @if (Route::has('login'))
                             <li class="nav-item">
@@ -29,57 +22,57 @@
                         @endif -->
 
                         @if (Route::has('register'))
-                            <li class="nav-item">                                  
-                                <a class="nav-link btn btn-orange" href="{{ route('register') }}"> <i class="far fa-user-plus"></i> {{ __('CREATE AN ACCOUNT') }}</a>
-                            </li>
+                            <a class="btn btn-link btn-orange text-white ml-auto" href="{{ route('register') }}"> <i class="fas fa-user-plus"></i> {{ __('CREATE AN ACCOUNT') }}</a>
                         @endif
                     @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
+                        <!-- <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a> -->
+                            <span>{{ Auth::user()->name }}</span>
+                            <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
 
-                        <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div> -->
+                      <!--   </li> -->
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div> -->
-                    </li>
-
-                    <li class="nav-item">                                  
+                                                        
                         <a class="nav-link btn btn-orange" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('LOGOUT') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
-                        </form>
-                    </li>
+                        </form>                        
                     @endguest
-                </ul>
+                </div>
             </div>
-        </div>
-    </nav>
 
-    <main class="py-4">
-        <div class="container">
-            <div class="row">
-                @yield('content')
-                <div class="col-8 hidden-sm-down">
-                    <image src="{{asset('img/logo-v5.jpeg')}}" class="auth-page-logo-img" alt="Smart CTPA Analayzer Logo"> 
-                    <blockquote class="blockquote text-right div-centered-items">
-                        <h2 class="fs-xxl fw-500 mt-4 custom-blue"> "<u class="orange-underline">Faster</u>, <u class="orange-underline">Better</u> and <u class="orange-underline">Simpler</u> means to help you diagnose <span class="custom-orange">Pulmonary Embolism</span>."</h2>     
-                    </blockquote>
+            <div class="flex-1" style="background: url(img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
+                <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
+                    <div class="row">
+                        
+                          @yield('content')
+
+                        <div class="col-md-6 col-lg-7 hidden-sm-down ml-auto">                                  
+                            <image src="{{asset('img/logo-v5.jpeg')}}" class="auth-page-logo-img" alt="Smart CTPA Analayzer Logo"> 
+                            <blockquote class="blockquote text-right">
+                                <h2 class="fs-xxl fw-500 mt-4 custom-blue"> "<u class="orange-underline">Faster</u>, <u class="orange-underline">Better</u> and <u class="orange-underline">Simpler</u> means to help you diagnose <span class="custom-orange">Pulmonary Embolism</span>."</h2>     
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <div class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white auth-page-footer">
+                        <?php echo date('Y');?> &copy; Smart CTPA Analyzer 
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
-</div>
-
-<div class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white auth-page-footer">       
-     <?php echo date('Y');?> &copy; Smart CTPA Analyzer 
+    </div>
 </div>
 @endsection
+

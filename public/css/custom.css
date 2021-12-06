@@ -47,7 +47,7 @@
 }
 
 .auth-page-logo-img{
-  width: 145px; height: 125px; margin-left: 300px; margin-top: 150px;
+  width: 145px; height: 125px; margin-left: 300px; margin-top: 100px;
 }
 
 .custom-auth-card{
@@ -56,12 +56,10 @@
 	background-position: bottom center;
 	background-repeat: no-repeat;
 	background-size: 210%;
-	position: absolute;
-	border-radius: 6px;
 }
 
 .custom-auth-card-sections{
-	background-color: rgba(36, 48, 74,0.1);
+	background-color: rgba(36, 48, 74,0.0);
 	color: #d75448;
 	text-align: center;
 }
@@ -76,3 +74,7 @@
     width: 100%;
 }
 
+.custom-link{
+	color: #d75448;
+}
+.custom-link:hover { color: #d75448; } 

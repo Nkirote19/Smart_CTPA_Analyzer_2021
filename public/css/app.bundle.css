@@ -2670,14 +2670,14 @@ html {
   border-color: #d6d3da; }
 
 .alert-success {
-  color: #45a197;
-  background-color: #f7fdfc;
-  border-color: #a3ebe4; }
+  color: #f7fdfc;
+  background-color:#45a197;
+  border-color: #45a197; }
 
 .alert-danger {
-  color: #e7026e;
-  background-color: #ffe5f1;
-  border-color: #fe9ecb; }
+  color: #ffffff;
+  background-color: #d32f2f;
+  border-color: #d32f2f; }
 
 .alert-warning {
   color: #c18300;

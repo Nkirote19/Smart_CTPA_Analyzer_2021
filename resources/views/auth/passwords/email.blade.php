@@ -3,9 +3,12 @@
 @section('pageTitle', 'Forgot Password')
 
 @section('content')
- <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4">
-    <div class="card px-4 custom-auth-card" style="margin-top:150px;">
-        <div class="card-header custom-auth-card-sections fw-900 text-uppercase">{{ __('Forgot Password') }}</div>
+<div class="col col-sm-12 col-md-6 col-lg-5 col-xl-4">
+    <h1 class="text-white fw-300 mb-3 d-sm-block d-md-none">
+        Secure login
+    </h1>
+    <div class="card p-4 rounded-plus bg-faded custom-auth-card" style="margin-top:60px!important;">
+        <div class="card-header custom-auth-card-sections fw-900 text-uppercase">{{ __('PASSWORD RESET REQUEST') }}</div>
 
         <div class="card-body">
             @if (session('status'))
@@ -33,8 +36,8 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-orange mt-2 text-uppercase" style="width:220px; margin-left: -80px;">
-                            {{ __('Send Password Reset Link') }}
+                        <button type="submit" class="btn btn-orange text-white text-uppercase mt-2" style="width:240px; margin-left: -80px;">
+                           <i class="fas fa-paper-plane"></i> {{ __('Send Password Reset Link') }}
                         </button>
                     </div>
                 </div>
@@ -42,8 +45,8 @@
         </div>
 
         <div class="card-footer orange-border-top custom-auth-card-sections">
-                 <a class="custom-orange" href="{{ route('login') }}">{{ __('I remembered my password') }}</a>
-            </div>
+            <a class="custom-link" href="{{ route('login') }}">{{ __('I remembered my password') }}</a>
+        </div>
     </div>
 </div>
 @endsection
