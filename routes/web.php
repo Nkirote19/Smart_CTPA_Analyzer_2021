@@ -22,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 #->middleware('verified') ===>Addthis to routes that you want accessible only by verfied users
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+Route::get('/scan_analysis', [App\Http\Controllers\HomeController::class, 'index'])->name('scan_analysis')->middleware('verified');
 
 //EMAIL VERIFICATION BLOCK
 // #The Email Verification Notice

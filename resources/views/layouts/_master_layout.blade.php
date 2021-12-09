@@ -41,6 +41,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/fa-brands.css')}}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/fa-solid.css')}}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/fa-regular.css')}}">
+        <link rel="stylesheet" media="screen, print" href="{{ asset('css/statistics/chartjs/chartjs.css')}}">
         <link media="screen, print" rel= "stylesheet" type= "text/css" href= "{{ asset('css/custom.css') }}">
     </head>
     <!-- BEGIN Body -->
@@ -216,6 +217,8 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                         + src/../jquery-snippets.js (core) -->
         <script src="{{ asset('js/vendors.bundle.js')}}"></script>
         <script src="{{ asset('js/app.bundle.js')}}"></script>
+         <script src="{{ asset('js/statistics/chartjs/chartjs.bundle.js')}}"></script>
+        <script src="{{ asset('js/custom.js')}}"></script>
     </body>
     <!-- END Body -->
 </html>
