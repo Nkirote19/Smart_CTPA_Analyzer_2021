@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PatientScanAnalysisController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -23,6 +25,9 @@ Auth::routes();
 #->middleware('verified') ===>Addthis to routes that you want accessible only by verfied users
 
 Route::get('/scan_analysis', [App\Http\Controllers\HomeController::class, 'index'])->name('scan_analysis')->middleware('verified');
+
+Route::get('add-patient', [PatientScanAnalysisController::class, 'create']);
+Route::post('add-patient', [PatientScanAnalysisController::class, 'store']);
 
 //EMAIL VERIFICATION BLOCK
 // #The Email Verification Notice

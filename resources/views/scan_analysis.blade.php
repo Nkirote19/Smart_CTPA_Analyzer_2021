@@ -24,7 +24,10 @@
 </div> -->
 
 @if (session('status'))
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success alert-dismissible" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times"></i></span>
+        </button>
         {{ session('status') }}
     </div>
 @endif
@@ -66,233 +69,270 @@
 </div>
 
 <!-- Your main content goes below here: -->
+<form action="{{ url('add-patient') }}" method="POST">
+      @csrf
 <div class="row">
-     <div class="col-xl-12">
-        <div id="panel-1" class="panel">
-            <div class="panel-hdr">
-                <h2>
-                    Patient <span class="fw-300"><i>Details</i></span>
-                </h2>
-                <div class="panel-toolbar">
-                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
-                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+  
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Patient <span class="fw-300"><i>Details</i></span>
+                    </h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                    </div>
                 </div>
-            </div>
-            <div class="panel-container show">
-                <div class="panel-content">
-                    <div class="row">
-                        <div class="col-2 form-group">
-                            <label class="form-label" for="patient_surname">Surname</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <div class="row">
+                            <div class="col-2 form-group">
+                                <label class="form-label" for="patient_surname">Surname</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" id="patient_surname" name="patient_surname" class="form-control" aria-label="Surname" aria-describedby="patient_surname">
                                 </div>
-                                <input type="text" id="patient_surname" class="form-control" aria-label="Surname" aria-describedby="patient_surname">
                             </div>
-                        </div>
 
-                        <div class="col-2 form-group">
-                            <label class="form-label" for="patient_fname">First Name</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <div class="col-2 form-group">
+                                <label class="form-label" for="patient_fname">First Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" id="patient_fname" name="patient_fname" class="form-control" aria-label="First Name" aria-describedby="patient_fname">
                                 </div>
-                                <input type="text" id="patient_fname" class="form-control" aria-label="First Name" aria-describedby="patient_fname">
                             </div>
-                        </div>
 
-                        <div class="col-2 form-group">
-                            <label class="form-label" for="patient_oname">Other Names</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <div class="col-2 form-group">
+                                <label class="form-label" for="patient_oname">Other Names</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" id="patient_oname" name="patient_oname" class="form-control" aria-label="Other Names" aria-describedby="patient_oname">
                                 </div>
-                                <input type="text" id="patient_oname" class="form-control" aria-label="Other Names" aria-describedby="patient_oname">
                             </div>
-                        </div>
 
-                        <div class="col-2 form-group">
-                            <h5 class="frame-heading">Gender</h5>
-                            <div class="frame-wrap">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="patient_female" name="patient_gender" checked="">
-                                    <label class="custom-control-label" for="patient_female">Female</label>
+                            <!-- <div class="col-2 form-group">
+                                <h5 class="frame-heading">Gender</h5>
+                                <div class="frame-wrap">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" id="patient_female" name="patient_gender" value="1" >
+                                        <label class="custom-control-label" for="patient_female">Female</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" id="patient_male" name="patient_gender" value="0" >
+                                        <label class="custom-control-label" for="patient_male">Male</label>
+                                    </div>
                                 </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="patient_male" name="patient_gender" >
-                                    <label class="custom-control-label" for="patient_male">Male</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-2 form-group">
-                            <label class="form-label" for="patient_age">Age</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user-clock"></i></span>
-                                </div>
-                                <input type="number" id="patient_age" class="form-control" aria-label="Age" aria-describedby="patient_age">
-                            </div>
-                        </div>
+                            </div> -->
 
-                        <div class="col-2 form-group">
-                            <label class="form-label" for="patient_weight">Weight (Kg)</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-weight"></i></span>
+                            <div class="author col-2 form-group" style=" margin-bottom: 1rem;">
+                                <h5><strong>Gender</strong></h5>                            
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" name="patient_gender" type="radio" value="1" id="patient_female" style="top: 0.1rem; width: 1.00rem; height: 1.00rem;">
+                                    <h5 class="form-check-label" for="patient_gender">Female</h5>
                                 </div>
-                                <input type="number" id="patient_weight" class="form-control" aria-label="Weight" aria-describedby="patient_weight">
-                            </div>
-                        </div>
 
-                        <div class="col-12 form-group">
-                            <label class="form-label" for="patient_chiefComplaints">Chief Complaints</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" name="patient_gender" type="radio" value="0" id="patient_male" style="top: 0.1rem; width: 1.00rem; height: 1.00rem;">
+                                    <h5 class="form-check-label" for="patient_gender">Male</h5>
                                 </div>
-                                <textarea class="form-control" id="patient_chiefComplaints" aria-label="Chief Complaints"></textarea>
                             </div>
-                        </div>
 
-                        <div class="col-12 form-group">
-                            <label class="form-label" for="patient_hpi">History of Presenting Illness (HPI)</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+                            <div class="col-2 form-group">
+                                <label class="form-label" for="patient_age">Age</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user-clock"></i></span>
+                                    </div>
+                                    <input type="number" id="patient_age" name="patient_age" class="form-control" aria-label="Age" aria-describedby="patient_age">
                                 </div>
-                               <textarea class="form-control" id="patient_hpi" aria-label="History of Presenting Illness"></textarea>
                             </div>
-                        </div>
 
-                        <div class="col-12 form-group">
-                            <label class="form-label" for="patient_pastMedicalHistory">Past Medical History</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+                            <div class="col-2 form-group">
+                                <label class="form-label" for="patient_weight">Weight (Kg)</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-weight"></i></span>
+                                    </div>
+                                    <input type="number" id="patient_weight" name="patient_weight" class="form-control" aria-label="Weight" aria-describedby="patient_weight">
                                 </div>
-                                <textarea class="form-control" id="patient_pastMedicalHistory" aria-label="Past Medical History"></textarea>
                             </div>
-                        </div>
 
-                        <div class="col-12 form-group">
-                            <label class="form-label" for="patient_familyMedicalHistory">Family's Medical History</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+                            <div class="col-12 form-group">
+                                <label class="form-label" for="patient_chiefComplaints">Chief Complaints</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+                                    </div>
+                                    <textarea class="form-control" id="patient_chiefComplaints" name="patient_chiefComplaints" aria-label="Chief Complaints"></textarea>
                                 </div>
-                                <textarea class="form-control" id="patient_familyMedicalHistory" aria-label="Family's Medical History"></textarea>
+                            </div>
+
+                            <div class="col-12 form-group">
+                                <label class="form-label" for="patient_hpi">History of Presenting Illness (HPI)</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+                                    </div>
+                                   <textarea class="form-control" id="patient_hpi" name="patient_hpi" aria-label="History of Presenting Illness"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-12 form-group">
+                                <label class="form-label" for="patient_pastMedicalHistory">Past Medical History</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+                                    </div>
+                                    <textarea class="form-control" id="patient_pastMedicalHistory" name="patient_pastMedicalHistory" aria-label="Past Medical History"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-12 form-group">
+                                <label class="form-label" for="patient_familyMedicalHistory">Family's Medical History</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+                                    </div>
+                                    <textarea class="form-control" id="patient_familyMedicalHistory" name="patient_familyMedicalHistory" aria-label="Family's Medical History"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-xl-6">
-        <div id="panel-1" class="panel">
-            <div class="panel-hdr">
-                <h2>
-                    Image(s) <span class="fw-300"><i>Upload</i></span>
-                </h2>
-                <div class="panel-toolbar">
-                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
-                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
-                </div>
-            </div>
-            <div class="panel-container show">
-                <div class="panel-content">
-                   <!--  https://medium.com/@goncalvesjoao/carrierwave-add-remove-individual-images-using-input-file-multiple-fb65f75de06a -->
-                    <!-- <div class="center">
-                        <div class="form-input">
-                     
-                            <div class="preview">
-                                <img id="file-ip-1-preview">
-                            </div>
-
-                            <label for="file-ip-1">Upload Image</label>
-
-                            <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
-                        </div>
-                    </div>  -->
-
-                    <!-- CODE FOR MULTIPLE IMAGES UPLOAD -->
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <div class="alert alert-primary">
-                        <div class="d-flex flex-start w-100">
-                            <div class="mr-2 hidden-md-down">
-                                <i class="far fa-info-circle"></i>
-                            </div>
-                            <div class="d-flex flex-fill">
-                                <div class="flex-fill">
-                                    <p style="margin-bottom: -5px!important; margin-top: -5px!important;" class="fw-500">
-                                        Upload multiple images by pressing and holding 'Ctrl' while selecting the images from the file explorer menu that appears upon clicking on 'Choose Files'
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field" align="left">               
-                      <input type="file" id="files" name="files[]" multiple />
-                    </div>
-                </div>
-                <div class="panel-content py-2 rounded-bottom border-faded border-left-0 border-right-0 border-bottom-0 text-muted d-flex">
-                    <button class="btn btn-link btn-blue text-white ml-auto mr-2" href=""><i class="fas fa-stethoscope"></i> RUN ANALYSIS</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-6">
-        <div id="panel-1" class="panel">
-            <div class="panel-hdr">
-                <h2>
-                    Scan <span class="fw-300"><i>Results</i></span>
-                </h2>
-                <div class="panel-toolbar">
-                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
-                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
-                </div>
-            </div>
-            <div class="panel-container show">
-                <div class="panel-content">
-                    <div id="potentialResultsChart">
-                        <canvas style="width:100%; height:300px;"></canvas>
-                    </div>
-
-                    <table class="table table-bordered m-0">
-                        <thead>
-                            <tr>
-                                <th>POTENTIAL CLASS</th>
-                                <th>POTENTIAL RATE (%)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">rv_lv_ratio_gte_1</th>
-                                <td> 10</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">leftsided_pe</th>
-                                <td> 16</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">acute_and_chronic_pe</th>
-                                <td> 7</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">indeterminate</th>
-                                <td> 3</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">rv_lv_ratio_lt_1</th>
-                                <td> 14</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+<div class="row">
+       <div class="col-6">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Image(s) <span class="fw-300"><i>Upload</i></span>
+                    </h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                       <!--  https://medium.com/@goncalvesjoao/carrierwave-add-remove-individual-images-using-input-file-multiple-fb65f75de06a -->
+                        <!-- <div class="center">
+                            <div class="form-input">
+                         
+                                <div class="preview">
+                                    <img id="file-ip-1-preview">
+                                </div>
+
+                                <label for="file-ip-1">Upload Image</label>
+
+                                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+                            </div>
+                        </div>  -->
+
+                        <!-- CODE FOR MULTIPLE IMAGES UPLOAD -->
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                        <div class="alert alert-primary">
+                            <div class="d-flex flex-start w-100">
+                                <div class="mr-2 hidden-md-down">
+                                    <i class="far fa-info-circle"></i>
+                                </div>
+                                <div class="d-flex flex-fill">
+                                    <div class="flex-fill">
+                                        <p style="margin-bottom: -5px!important; margin-top: -5px!important;" class="fw-500">
+                                            Upload multiple images by pressing and holding 'Ctrl' while selecting the images from the file explorer menu that appears upon clicking on 'Choose Files'
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field" align="left">               
+                          <input type="file" id="files" name="files[]" multiple />
+                        </div>
+                    </div>
+                    <div class="panel-content py-2 rounded-bottom border-faded border-left-0 border-right-0 border-bottom-0 text-muted d-flex">
+                        <button class="btn btn-link btn-blue text-white ml-auto mr-2" href=""><i class="fas fa-stethoscope"></i> RUN ANALYSIS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Scan <span class="fw-300"><i>Results</i></span>
+                    </h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <div id="potentialResultsChart">
+                            <canvas style="width:100%; height:300px;"></canvas>
+                        </div>
+
+                        <table class="table table-bordered m-0">
+                            <thead>
+                                <tr>
+                                    <th>POTENTIAL CLASS</th>
+                                    <th>POTENTIAL RATE (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">rv_lv_ratio_gte_1</th>
+                                    <td> 10</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">leftsided_pe</th>
+                                    <td> 16</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">acute_and_chronic_pe</th>
+                                    <td> 7</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">indeterminate</th>
+                                    <td> 3</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">rv_lv_ratio_lt_1</th>
+                                    <td> 14</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="row">
+        <div class="col-xl-12">
+             <div id="panel-8" class="panel">
+                <div class="panel-hdr">
+                    <h2>Are you done classifying the images?</h2>
+
+                    <div class="panel-toolbar">
+                        <button class="btn btn-default mt-3 mb-3 fw-500 mr-2"> <i class="fas fa-times-circle"></i> CANCEL</button>
+                    </div>
+                    <div class="panel-toolbar ml-2">
+                        <button class="btn btn-orange fw-500" type = "submit"><i class="fas fa-save"></i> SAVE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+</div>
+  </form>
 @endsection
