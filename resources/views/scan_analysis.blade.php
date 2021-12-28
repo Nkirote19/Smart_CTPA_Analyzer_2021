@@ -223,22 +223,6 @@
                 </div>
                 <div class="panel-container show">
                     <div class="panel-content">
-                       <!--  https://medium.com/@goncalvesjoao/carrierwave-add-remove-individual-images-using-input-file-multiple-fb65f75de06a -->
-                        <!-- <div class="center">
-                            <div class="form-input">
-                         
-                                <div class="preview">
-                                    <img id="file-ip-1-preview">
-                                </div>
-
-                                <label for="file-ip-1">Upload Image</label>
-
-                                <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
-                            </div>
-                        </div>  -->
-
-                        <!-- CODE FOR MULTIPLE IMAGES UPLOAD -->
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                         <div class="alert alert-primary">
                             <div class="d-flex flex-start w-100">
                                 <div class="mr-2 hidden-md-down">
@@ -247,15 +231,24 @@
                                 <div class="d-flex flex-fill">
                                     <div class="flex-fill">
                                         <p style="margin-bottom: -5px!important; margin-top: -5px!important;" class="fw-500">
-                                            Upload multiple images by pressing and holding 'Ctrl' while selecting the images from the file explorer menu that appears upon clicking on 'Choose Files'
+                                            Upload an image by clicking on 'Choose File' and selecting your desired image from your file directory. Click on 'ANALYZE' to run inference.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="field" align="left">               
-                          <input type="file" id="files" name="files[]" multiple />
+                        <div class="upload-section">
+                            <div class="upload-file">
+                                <form class = "file-form" action="/analysis" method="post", enctype="multipart/form-data">
+                                    <input class="file-form-input" type="file" , name = "file"/><br><br>
+                                    <button class="btn btn-blue text-white ml-auto mr-2"><i class="far fa-stethoscope p-1"></i>ANALYZE</button> 
+                                </form>
+                            </div>
+
+                            <div class = "upload-error-div">
+                                <h4 class="fw-700 mt-3 text-center">{{error}}</h4>
+                            </div>
                         </div>
                     </div>
                     <div class="panel-content py-2 rounded-bottom border-faded border-left-0 border-right-0 border-bottom-0 text-muted d-flex">
@@ -278,60 +271,90 @@
                 </div>
                 <div class="panel-container show">
                     <div class="panel-content">
-                        <div id="potentialResultsChart">
-                            <canvas style="width:100%; height:300px;"></canvas>
+                        <div class="alert alert-primary">
+                            <div class="d-flex flex-start w-100">
+                                <div class="mr-2 hidden-md-down">
+                                    <i class="far fa-info-circle"></i>
+                                </div>
+                                <div class="d-flex flex-fill">
+                                    <div class="flex-fill">
+                                        <p style="margin-bottom: -5px!important; margin-top: -5px!important;" class="fw-500">
+                                           Upon clicking 'ANALYZE', the image you uploaded together with a list of the 5 highest ranking probable classes will appear here.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        {% if predictions %}
+                            <div class = "">
+                                <row style = "width: 100% ; display: flex; justify-content: center;">
+                                    <h3 class="upload-titles"><u>Uploaded Image</u></h3>
+                                </row>
+                                <row style = "width: 100% ; display: flex; justify-content: center;">
+                                    <img class = "result-img" src="{{url_for('static', filename = 'images/'+ img)}}">
+                                </row>
+                            </div>
 
-                        <table class="table table-bordered m-0">
-                            <thead>
-                                <tr>
-                                    <th>POTENTIAL CLASS</th>
-                                    <th>POTENTIAL RATE (%)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">rv_lv_ratio_gte_1</th>
-                                    <td> 10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">leftsided_pe</th>
-                                    <td> 16</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">acute_and_chronic_pe</th>
-                                    <td> 7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">indeterminate</th>
-                                    <td> 3</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">rv_lv_ratio_lt_1</th>
-                                    <td> 14</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <div class = "">            
+                                <row style = "width: 100% ; display: flex; justify-content: center;">
+                                    <h3 class = "upload-titles mt-3"><u>Model Prediction</u></h3>
+                                </row>
+                                <row style = "width: 100%; display: flex; justify-content: center;">
+                                    <table class="table-bordered table-custom table-responsive-ms">
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Class</th>
+                                            <th>Probability</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">1</td>
+                                            <td class="pl-2">{{ predictions.class1 }}</td>
+                                            <td class="text-center">{{ predictions.prob1 }} %</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">2</td>
+                                            <td class="pl-2">{{ predictions.class2 }}</td>
+                                            <td class="text-center">{{ predictions.prob2 }} %</td>
+                                        </tr>                                                                                                               
+                                        <tr>
+                                            <td class="text-center">3</td>
+                                            <td class="pl-2">{{ predictions.class3 }}</td>
+                                            <td class="text-center">{{ predictions.prob3 }} %</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">4</td>
+                                            <td class="pl-2">{{ predictions.class4 }}</td>
+                                            <td class="text-center">{{ predictions.prob4 }} %</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">5</td>
+                                            <td class="pl-2">{{ predictions.class5 }}</td>
+                                            <td class="text-center">{{ predictions.prob5 }} %</td>
+                                        </tr>
+                                    </table>
+                                </row>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
 </div>
 <div class="row">
-        <div class="col-xl-12">
-             <div id="panel-8" class="panel">
-                <div class="panel-hdr">
-                    <h2>Are you done classifying the images?</h2>
+    <div class="col-xl-12">
+         <div id="panel-8" class="panel">
+            <div class="panel-hdr">
+                <h2>Are you done classifying the images?</h2>
 
-                    <div class="panel-toolbar">
-                        <button class="btn btn-default mt-3 mb-3 fw-500 mr-2"> <i class="fas fa-times-circle"></i> CANCEL</button>
-                    </div>
-                    <div class="panel-toolbar ml-2">
-                        <button class="btn btn-orange fw-500" type = "submit"><i class="fas fa-save"></i> SAVE</button>
-                    </div>
+                <div class="panel-toolbar">
+                    <button class="btn btn-default mt-3 mb-3 fw-500 mr-2"> <i class="fas fa-times-circle"></i> CANCEL</button>
+                </div>
+                <div class="panel-toolbar ml-2">
+                    <button class="btn btn-orange fw-500" type = "submit"><i class="fas fa-save"></i> SAVE</button>
                 </div>
             </div>
         </div>
+    </div>
   
 </div>
   </form>
