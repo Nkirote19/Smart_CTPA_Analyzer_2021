@@ -2926,10 +2926,10 @@ html {
 
 /* buttons used in the header section of the page */
 .header-btn[data-class='mobile-nav-on'] {
-  border-color: #fc077a;
-  background-color: #fd2087;
+  border-color: #d75448;
+  background-color: #d75448;
   background-image: -webkit-gradient(linear, left bottom, left top, from(#fd2087), to(#e7026e));
-  background-image: linear-gradient(to top, #fd2087, #e7026e);
+  background-image: linear-gradient(to top, #d75448, #d75448);
   color: #fff;
   width: 3.875rem; }
 

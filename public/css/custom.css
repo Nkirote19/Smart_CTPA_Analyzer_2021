@@ -166,9 +166,6 @@ input[type="file"] {
     color: #f44336;
 }
 
-.btn-blue{
-    background-color: #24304a ;
-}
 
 .upload-titles{
     color: #24304a ;
@@ -178,7 +175,7 @@ input[type="file"] {
 .upload-section
 {
     width: 100%;
-    margin-top: 5%!important;
+    margin-top: 1%!important;
 }
 
 .upload-file
@@ -218,8 +215,8 @@ input[type="file"] {
 
 .result-img
 {
-    width: 450px;
-    height: 350px;
+    width: 505px;
+    height: 405px;
    /* border : 2px solid #24304a;*/
 }
 

@@ -67,12 +67,14 @@
         </div>
     </div>
 </div>
-
+<div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+  Thank you for getting in touch! 
+</div>
 <!-- Your main content goes below here: -->
-<form action="{{ url('add-patient') }}" method="POST">
-      @csrf
-<div class="row">
-  
+<!-- <form method="POST" enctype="multipart/form-data" name="patientDetailsForm" id="patientDetailsForm"> -->
+<form method="POST"  id="patientDetailsForm" enctype="multipart/form-data">
+          @csrf
+    <div class="row">  
         <div class="col-xl-12">
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
@@ -203,13 +205,28 @@
                                     <textarea class="form-control" id="patient_familyMedicalHistory" name="patient_familyMedicalHistory" aria-label="Family's Medical History"></textarea>
                                 </div>
                             </div>
+
+                            <div class="col-12 form-group upload-section">
+                                <label class="form-label" for="pImage">Upload Image for Analysis</label>
+                                <div class="upload-file">
+                                    <input class="file-form-input" type="file" , name = "image" id="Pimage" /><br><br>
+                                        <button class="btn btn-blue text-white ml-auto mr-2" type = "submit"><i class="far fa-stethoscope p-1"></i>ANALYZE</button> 
+                                </div>
+
+                                <span class="text-danger" id="image-input-error"></span>
+
+                                <div class = "upload-error-div">
+                                    {{--<h4 class="fw-700 mt-3 text-center">{{error}}</h4>--}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-</div>
-<div class="row">
+    </div>
+
+    <!-- <div class="row">
        <div class="col-6">
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
@@ -240,25 +257,21 @@
 
                         <div class="upload-section">
                             <div class="upload-file">
-                                <form class = "file-form" action="/analysis" method="post", enctype="multipart/form-data">
-                                    <input class="file-form-input" type="file" , name = "file"/><br><br>
+                                <input class="file-form-input" type="file" , name = "image"/><br><br>
                                     <button class="btn btn-blue text-white ml-auto mr-2"><i class="far fa-stethoscope p-1"></i>ANALYZE</button> 
-                                </form>
                             </div>
 
                             <div class = "upload-error-div">
-                                <h4 class="fw-700 mt-3 text-center">{{error}}</h4>
+                                {{--<h4 class="fw-700 mt-3 text-center">{{error}}</h4>--}}
                             </div>
                         </div>
                     </div>
-                    <div class="panel-content py-2 rounded-bottom border-faded border-left-0 border-right-0 border-bottom-0 text-muted d-flex">
-                        <button class="btn btn-link btn-blue text-white ml-auto mr-2" href=""><i class="fas fa-stethoscope"></i> RUN ANALYSIS</button>
-                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-6">
+        </div> -->
+</form>
+    <div class="row">
+        <div class="col-12">
             <div id="panel-1" class="panel">
                 <div class="panel-hdr">
                     <h2>
@@ -271,70 +284,66 @@
                 </div>
                 <div class="panel-container show">
                     <div class="panel-content">
-                        <div class="alert alert-primary">
-                            <div class="d-flex flex-start w-100">
-                                <div class="mr-2 hidden-md-down">
-                                    <i class="far fa-info-circle"></i>
+                        <div class="accordion accordion-outline" id="class_definitions_details">
+                            <div class="card">
+                                <div class="card-header">
+                                    <a href="" class="card-title collapsed" data-toggle="collapse" data-target="#class_definitions_details_card" aria-expanded="false">
+                                        <i class="far fa-list pr-2"></i>
+                                       <h5 class="fw-500" style="padding-top:5px;">Class Definitions</h5>
+                                        <span class="ml-auto custom-orange fw-700">
+                                            <span class="collapsed-reveal">
+                                                <i class="far fa-info-circle pr-1"></i> CLICK HERE FOR DETAILS <i class="far fa-angle-up fs-xl pl-2"></i>
+                                            </span>
+                                            <span class="collapsed-hidden">
+                                               <i class="far fa-info-circle pr-1"></i> CLICK HERE FOR DETAILS <i class="far fa-angle-down fs-xl pl-2"></i>
+                                            </span>
+                                        </span>
+                                    </a>
                                 </div>
-                                <div class="d-flex flex-fill">
-                                    <div class="flex-fill">
-                                        <p style="margin-bottom: -5px!important; margin-top: -5px!important;" class="fw-500">
-                                           Upon clicking 'ANALYZE', the image you uploaded together with a list of the 5 highest ranking probable classes will appear here.
-                                        </p>
+                                <div id="class_definitions_details_card" class="collapse" data-parent="#class_definitions_details">
+                                    <div class="card-body">
+                                       Below are the definitions of the classes returned after running inference on the scan:<br>
+                                       <u><b>Definitions</b></u>
+                                       <ul>
+                                            <li><b>acute_and_chronic_pe</b> - exam-level, indicates that the PE present in the study is both acute AND chronic</li>
+                                            <li><b>central_pe</b> - exam-level, indicates that there is PE present in the center of the images in the study</li>
+                                            <li><b>chronic_pe</b> - exam-level, indicates that the PE in the study is chronic</li>
+                                            <li><b>flow_artifact</b> - informational</li>
+                                            <li><b>indeterminate</b> -exam-level, indicates that while the study is not negative for PE, an ultimate set of exam-level labels could not be created, due to QA issues</li>
+                                            <li><b>leftsided_pe</b> - exam-level, indicates that there is PE present on the left side of the images in the study</li>
+                                            <li><b>negative_exam_for_pe</b> - exam-level, whether there are any images in the study that have PE present.</li>
+                                            <li><b>pe_present_on_image</b> - image-level, notes whether any form of PE is present on the image.</li>
+                                            <li><b>qa_contrast</b> - informational, indicates whether radiologists noted an issue with contrast in the study.</li>
+                                            <li><b>qa_motion</b> - informational, indicates whether radiologists noted an issue with motion in the study.</li>
+                                            <li><b>rightsided_pe</b> - exam-level, indicates that there is PE present on the right side of the images in the study</li> 
+                                            <li><b>rv_lv_ratio_gte_1</b> - exam-level, indicates whether the RV/LV ratio present in the study is >= 1</li>
+                                            <li><b>rv_lv_ratio_lt_1</b> - exam-level, indicates whether the RV/LV ratio present in the study is < 1</li>                                         
+                                            <li><b>true_filling_defect_not_pe</b> - informational, indicates a defect that is NOT PE</li>        
+                                       </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {% if predictions %}
-                            <div class = "">
+
+                        <div class="row">
+                            <div class = "col-6">
                                 <row style = "width: 100% ; display: flex; justify-content: center;">
                                     <h3 class="upload-titles"><u>Uploaded Image</u></h3>
                                 </row>
                                 <row style = "width: 100% ; display: flex; justify-content: center;">
-                                    <img class = "result-img" src="{{url_for('static', filename = 'images/'+ img)}}">
+                                    <img class="result-img" id="scanImage">
                                 </row>
                             </div>
 
-                            <div class = "">            
+                            <div class = "col-6">            
                                 <row style = "width: 100% ; display: flex; justify-content: center;">
-                                    <h3 class = "upload-titles mt-3"><u>Model Prediction</u></h3>
+                                    <h3 class = "upload-titles mt-1"><u>Model Prediction</u></h3>
                                 </row>
                                 <row style = "width: 100%; display: flex; justify-content: center;">
-                                    <table class="table-bordered table-custom table-responsive-ms">
-                                        <tr>
-                                            <th>Rank</th>
-                                            <th>Class</th>
-                                            <th>Probability</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="pl-2">{{ predictions.class1 }}</td>
-                                            <td class="text-center">{{ predictions.prob1 }} %</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">2</td>
-                                            <td class="pl-2">{{ predictions.class2 }}</td>
-                                            <td class="text-center">{{ predictions.prob2 }} %</td>
-                                        </tr>                                                                                                               
-                                        <tr>
-                                            <td class="text-center">3</td>
-                                            <td class="pl-2">{{ predictions.class3 }}</td>
-                                            <td class="text-center">{{ predictions.prob3 }} %</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">4</td>
-                                            <td class="pl-2">{{ predictions.class4 }}</td>
-                                            <td class="text-center">{{ predictions.prob4 }} %</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">5</td>
-                                            <td class="pl-2">{{ predictions.class5 }}</td>
-                                            <td class="text-center">{{ predictions.prob5 }} %</td>
-                                        </tr>
-                                    </table>
+                                   @livewire('display-result')
                                 </row>
                             </div>
-                        {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -350,12 +359,13 @@
                     <button class="btn btn-default mt-3 mb-3 fw-500 mr-2"> <i class="fas fa-times-circle"></i> CANCEL</button>
                 </div>
                 <div class="panel-toolbar ml-2">
-                    <button class="btn btn-orange fw-500" type = "submit"><i class="fas fa-save"></i> SAVE</button>
+                    <button class="btn btn-orange fw-500"><i class="fas fa-save"></i> SAVE</button>
                 </div>
             </div>
         </div>
     </div>
   
 </div>
-  </form>
+<!-- </form> -->
+ 
 @endsection

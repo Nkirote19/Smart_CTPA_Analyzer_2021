@@ -5,6 +5,7 @@ use App\Http\Controllers\PatientScanAnalysisController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,8 @@ Auth::routes();
 Route::get('/scan_analysis', [App\Http\Controllers\HomeController::class, 'index'])->name('scan_analysis')->middleware('verified');
 
 Route::get('add-patient', [PatientScanAnalysisController::class, 'create']);
-Route::post('add-patient', [PatientScanAnalysisController::class, 'store']);
+Route::post('add-patient', [PatientScanAnalysisController::class, 'store'])->name('patient.add');
+
 
 //EMAIL VERIFICATION BLOCK
 // #The Email Verification Notice
