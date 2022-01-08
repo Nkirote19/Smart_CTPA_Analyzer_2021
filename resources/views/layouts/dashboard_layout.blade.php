@@ -40,9 +40,16 @@
                         -->
                         <ul id="js-nav-menu" class="nav-menu">
                             <li class="active">
-                                <a href="" title="Scan Analysis" data-filter-tags="blank page">
+                                <a href="{{url('scan_analysis')}}" title="Scan Analysis">
                                     <i class="far fa-lungs"></i>
                                     <span class="nav-link-text">Scan Analysis</span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="{{url('patient_records')}}" title="Patient Records">
+                                    <i class="far fa-clipboard-list"></i>
+                                    <span class="nav-link-text">Patient Records</span>
                                 </a>
                             </li>
                         </ul>

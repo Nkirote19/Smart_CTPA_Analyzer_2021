@@ -30,6 +30,10 @@ Route::get('/scan_analysis', [App\Http\Controllers\HomeController::class, 'index
 Route::get('add-patient', [PatientScanAnalysisController::class, 'create']);
 Route::post('add-patient', [PatientScanAnalysisController::class, 'store'])->name('patient.add');
 
+Route::get('/patient_records',function(){
+    return view('patient_records');
+})->name('patient_records')->middleware('verified');
+
 
 //EMAIL VERIFICATION BLOCK
 // #The Email Verification Notice

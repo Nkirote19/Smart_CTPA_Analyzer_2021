@@ -41,7 +41,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/fa-brands.css')}}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/fa-solid.css')}}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/fa-regular.css')}}">
-        <!-- <link rel="stylesheet" media="screen, print" href="{{ asset('css/datagrid/datatables/datatables.bundle.css')}}"> -->
+        <link rel="stylesheet" media="screen, print" href="{{ asset('css/datagrid/datatables/datatables.bundle.css')}}">
         <link media="screen, print" rel= "stylesheet" type= "text/css" href= "{{ asset('css/custom.css') }}">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
@@ -221,16 +221,16 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                         + src/../jquery-snippets.js (core) -->
         <script src="{{ asset('js/vendors.bundle.js')}}"></script>
         <script src="{{ asset('js/app.bundle.js')}}"></script>
-      <!--   <script src="{{ asset('js/datagrid/datatables/datatables.bundle.js')}}"></script> -->
-    <!--     <script type="text/javascript">
+        <script src="{{ asset('js/datagrid/datatables/datatables.bundle.js')}}"></script>
+        <script type="text/javascript">
              $(document).ready(function()
             {
-                $('#predictionsTable').dataTable(
+                $('#patient_records_table').dataTable(
                 {
                     responsive: true
                 });
             });
-        </script> -->
+        </script>
          @livewireScripts
           <script type="text/javascript">
             $('#patientDetailsForm').submit(function(e) {

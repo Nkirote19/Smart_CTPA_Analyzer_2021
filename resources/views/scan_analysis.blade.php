@@ -67,9 +67,9 @@
         </div>
     </div>
 </div>
-<div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+<!-- <div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
   Thank you for getting in touch! 
-</div>
+</div> -->
 <!-- Your main content goes below here: -->
 <!-- <form method="POST" enctype="multipart/form-data" name="patientDetailsForm" id="patientDetailsForm"> -->
 <form method="POST"  id="patientDetailsForm" enctype="multipart/form-data">
@@ -359,7 +359,7 @@
                     <button class="btn btn-default mt-3 mb-3 fw-500 mr-2"> <i class="fas fa-times-circle"></i> CANCEL</button>
                 </div>
                 <div class="panel-toolbar ml-2">
-                    <button class="btn btn-orange fw-500"><i class="fas fa-save"></i> SAVE</button>
+                    <button class="btn btn-orange fw-500" onclick="location.href = '{{url('patient_records')}}'"><i class="fas fa-save"></i> SAVE</button>
                 </div>
             </div>
         </div>
