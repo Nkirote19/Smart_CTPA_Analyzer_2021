@@ -34,6 +34,7 @@ Route::get('/patient_records',function(){
     return view('patient_records');
 })->name('patient_records')->middleware('verified');
 
+Route::get('patientRecordsList', [PatientScanAnalysisController::class, 'retrieveRecords']);
 
 //EMAIL VERIFICATION BLOCK
 // #The Email Verification Notice

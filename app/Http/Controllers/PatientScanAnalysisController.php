@@ -48,4 +48,10 @@ class PatientScanAnalysisController extends Controller
         // return redirect()->back()->with('status','Patient Details Added Successfully');
 
         }
+
+    public function retrieveRecords(){
+       $records = PatientScanAnalysisModel::all()->toArray();
+        return response()
+            ->json(["data" => $records ? $records : []]);
+    }
 }

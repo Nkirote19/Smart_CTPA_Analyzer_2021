@@ -48,8 +48,8 @@
             </div>
             <div class="panel-container show">
                 <div class="panel-content">
-				   <table id="patient_records_table" class="table table-bordered table-responsive-ms">
-				        <thead>
+				   <table id="patient_records_table" class="table table-bordered table-responsive-ms w-100">
+				        <thead class="text-uppercase">
 				        <tr>
 				            <th>No.</th>
 				            <th>Surname</th>
@@ -58,11 +58,12 @@
 				            <th>Gender</th>
 				            <th>Age</th>
 				            <th>Weight (kg)</th>
+                            <th>ACTIONS</th>
 				        </tr>
 				        </thead>
 
 				        <tbody>
-				            <tr>
+				            <!-- <tr>
 				                <td>1</td>
 				                <td>Mutabari</td>
 				                <td>Fridah</td>
@@ -70,7 +71,7 @@
 				                <td>Female</td>
 				                <td>21</td>
 				                <td>56</td>
-				            </tr>
+				            </tr> -->
 				        </tbody>
 				    </table>
 				</div>
