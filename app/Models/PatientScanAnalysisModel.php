@@ -38,7 +38,7 @@ class PatientScanAnalysisModel extends Model
 	protected $primaryKey = 'patient_id';
 
 	protected $casts = [
-		'patient_gender' => 'bool',
+		// 'patient_gender' => 'bool',
 		'patient_age' => 'int',
 		'patient_weight' => 'float'
 	];

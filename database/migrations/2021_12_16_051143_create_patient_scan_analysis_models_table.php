@@ -18,7 +18,8 @@ class CreatePatientScanAnalysisModelsTable extends Migration
             $table->string('patient_surname');
             $table->string('patient_fname');
             $table->string('patient_oname');
-            $table->boolean('patient_gender');
+            // $table->boolean('patient_gender');
+            $table->string('patient_gender');
             $table->integer('patient_age');
             $table->float('patient_weight');
             $table->longText('patient_chiefComplaints');

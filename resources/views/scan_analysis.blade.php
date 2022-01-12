@@ -136,12 +136,12 @@
                             <div class="author col-2 form-group" style=" margin-bottom: 1rem;">
                                 <h5><strong>Gender</strong></h5>                            
                                 <div class="form-check-inline">
-                                    <input class="form-check-input" name="patient_gender" type="radio" value="1" id="patient_female" style="top: 0.1rem; width: 1.00rem; height: 1.00rem;">
+                                    <input class="form-check-input" name="patient_gender" type="radio" value="Female" id="patient_female" style="top: 0.1rem; width: 1.00rem; height: 1.00rem;">
                                     <h5 class="form-check-label" for="patient_gender">Female</h5>
                                 </div>
 
                                 <div class="form-check-inline">
-                                    <input class="form-check-input" name="patient_gender" type="radio" value="0" id="patient_male" style="top: 0.1rem; width: 1.00rem; height: 1.00rem;">
+                                    <input class="form-check-input" name="patient_gender" type="radio" value="Male" id="patient_male" style="top: 0.1rem; width: 1.00rem; height: 1.00rem;">
                                     <h5 class="form-check-label" for="patient_gender">Male</h5>
                                 </div>
                             </div>
