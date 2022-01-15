@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Prediction;
 
 /**
  * Class PatientScanAnalysisModel
@@ -60,5 +61,10 @@ class PatientScanAnalysisModel extends Model
 	public function predictions()
 	{
 		return $this->hasMany(Prediction::class, 'patient_id');
+	}
+
+	public function getSpecificPredictions()
+	{
+		return $scanPredictions= $this->hasMany(Prediction::class, 'patient_id')->select('acute_and_chronic_pe','central_pe','chronic_pe','flow_artifact','indeterminate','leftsided_pe','negative_exam_for_pe','pe_present_on_image','qa_contrast','qa_motion','rightsided_pe','rv_lv_ratio_gte_1','rv_lv_ratio_lt_1','true_filling_defect_not_pe');
 	}
 }

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard_layout')
 
-@section('pageTitle', 'Dashboard')
+@section('pageTitle', "Patients' Records")
 
 @section('content')
 
@@ -10,10 +10,10 @@
     <li class="position-absolute pos-top pos-right d-none d-sm-block custom-blue"><span class="js-get-date"></span></li>
 </ol>
 
-<div class="accordion accordion-outline" id="smart_analysis_page_guidelines">
+<div class="accordion accordion-outline" id="patient_records_page_guidelines">
     <div class="card">
         <div class="card-header">
-            <a href="" class="card-title collapsed" data-toggle="collapse" data-target="#smart_analysis_guidelines" aria-expanded="false">
+            <a href="" class="card-title collapsed" data-toggle="collapse" data-target="#patient_records_guidelines" aria-expanded="false">
                 <i class="far fa-clipboard-list fa-2x pr-2"></i>
                <h2 class="fw-500" style="padding-top:5px;">Patient Records</h2>
                 <span class="ml-auto custom-orange fw-700">
@@ -26,7 +26,7 @@
                 </span>
             </a>
         </div>
-        <div id="smart_analysis_guidelines" class="collapse" data-parent="#smart_analysis_page_guidelines">
+        <div id="patient_records_guidelines" class="collapse" data-parent="#patient_records_page_guidelines">
             <div class="card-body">
                This page displays a list of all patient records in which analysis has been made.
             </div>

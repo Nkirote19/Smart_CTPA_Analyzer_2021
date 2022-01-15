@@ -6,7 +6,7 @@
                 <!-- BEGIN Left Aside -->
                 <aside class="page-sidebar ">
                     <div class="page-logo background-color-light orange-bottom-border">                        
-                        <img src="img/logo-v5.jpeg" alt="Smart CTPA Analyzer" aria-roledescription="logo" style="width:48px;height:40px;margin-left:-15px;">
+                        <img src="{{ asset('img/logo-v5.jpeg') }}" alt="Smart CTPA Analyzer" aria-roledescription="logo" style="width:48px;height:40px;margin-left:-15px;">
                         <span class="page-logo-text mr-1 text-uppercase logo-text">Smart CTPA Analyzer</span>
                         <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>                       
                     </div>
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="info-card">
-                            <img src="img/logo-v5.jpeg" class="profile-image rounded-circle" alt="Smart CTPA Analyzer Logo" style="margin-left: -20px;">
+                            <img src="{{ asset('img/logo-v5.jpeg') }}" class="profile-image rounded-circle" alt="Smart CTPA Analyzer Logo" style="margin-left: -20px;">
                             <div class="info-card-text">
                                 <a href="#" class="d-flex align-items-center text-white">
                                     <span class="text-truncate text-truncate-lg d-inline-block">
@@ -30,7 +30,7 @@
                                 </a>
                                 <span class="d-inline-block text-truncate text-truncate-lg"> {{ Auth::user()->email }}</span>
                             </div>
-                            <img src="img/card-background.jpg" class="cover" alt="cover">
+                            <img src="{{asset('img/card-background.jpg')}}" class="cover" alt="cover">
                            <!--  <a href="#" onclick="return false;" class="pull-trigger-btn" data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar" data-focus="nav_filter_input">
                                 <i class="fal fa-angle-down"></i>
                             </a> -->
@@ -75,7 +75,7 @@
                     <header class="page-header background-color-light orange-bottom-border" role="banner">
                         <!-- we need this logo when user switches to nav-function-top -->
                         <div class="page-logo">
-                            <img src="img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                            <img src="{{ asset('img/logo-v5.jpeg') }}" alt="SmartAdmin WebApp" aria-roledescription="logo">
                             <span class="page-logo-text mr-1">Smart CTPA Analyzer</span>
                             <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
                             <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>                         

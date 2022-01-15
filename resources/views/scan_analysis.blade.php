@@ -147,7 +147,7 @@
                             </div>
 
                             <div class="col-2 form-group">
-                                <label class="form-label" for="patient_age">Age</label>
+                                <label class="form-label" for="patient_age">Age (Years)</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user-clock"></i></span>

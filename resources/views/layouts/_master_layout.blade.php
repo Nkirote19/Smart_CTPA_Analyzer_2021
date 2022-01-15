@@ -42,6 +42,8 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/fa-solid.css')}}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/fa-regular.css')}}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/datagrid/datatables/datatables.bundle.css')}}">
+        <link rel="stylesheet" media="screen, print" href="{{ asset('css/page-invoice.css')}}">
+        
         <link media="screen, print" rel= "stylesheet" type= "text/css" href= "{{ asset('css/custom.css') }}">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
@@ -288,30 +290,13 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                     orderable: false,
                     render: function(data, type, full) {
                         return ` <div style="text-align:center!important;"><td style="width:190px ;text-align: center!important;">
-                            <button type="button" title="Edit" id="edit" class="btn btn-xs edit-btn custom-blue btn-orange details-button text-uppercase">
+                            <button type="button" title="Edit" id="edit" class="btn btn-xs edit-btn custom-blue btn-orange details-button text-uppercase" onclick="window.location='{{ route('patient_record_details', '') }}/${data.patient_id}'">
                                 <i class="fas fa-user-edit"></i> <span class="hidden-mobile hidden-tablet">VIEW DETAILS</span>
                             </button>              
                         </td></div>`
                     },
             }]
         });
-
-         $('#patient_records_table').on('click', '.details-button', event => {
-                // var data = usersTable.row($(event.target).parents('tr')).data();
-                // document.getElementById("user_id").value = data.user_id
-                // document.getElementById("user_name").value = data.username
-                // document.getElementById("user_email").value = data.email
-                // roleSelect.value = data.role_id
-                // if (data.department) {
-                //     departmentSelect.value = data.department.department_id
-                // }
-                // userDepartmentMappingId = data.user_department_mapping_id
-                // toggleDepartmentDiv()
-                // editingOffset = $(event.target).parents('tr').position()
-                // window.scrollTo(0, 0)
-                // isEditing = true
-            });
-
     })
 </script>
     </body>

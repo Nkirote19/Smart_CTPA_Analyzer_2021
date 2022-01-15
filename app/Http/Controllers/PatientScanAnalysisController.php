@@ -49,9 +49,33 @@ class PatientScanAnalysisController extends Controller
 
         }
 
-    public function retrieveRecords(){
+    public function retrieveAllRecords(){
        $records = PatientScanAnalysisModel::all()->toArray();
         return response()
             ->json(["data" => $records ? $records : []]);
+    }
+
+     public function retrieveIndividualRecordDetails($id){
+        $patient = PatientScanAnalysisModel::findOrFail($id);
+
+        $patSurname = $patient->patient_surname;
+        $patFname = $patient->patient_fname;
+        $patOname = $patient->patient_oname;
+        $patGender  = $patient->patient_gender;
+        $patAge  = $patient->patient_age;
+        $patWeight = $patient->patient_weight;
+
+        $patCC = $patient->patient_chiefComplaints;
+        $patHPI  = $patient->patient_hpi;
+        $patPMH  = $patient->patient_pastMedicalHistory;
+        $patFMH = $patient->patient_familyMedicalHistory;
+
+        $patScanImage = $patient->patient_image;
+
+        $scanPredictions = $patient->getSpecificPredictions;
+        $scanPredictions=array($scanPredictions);
+        // $scanPredictions=asort($scanPredictions);
+
+        return view('patient_record_details',['patient_id' => $patient->patient_id,'patSurname' => $patSurname,'patFname' => $patFname,'patOname' => $patOname, 'patGender' => $patGender, 'patAge' => $patAge, 'patWeight' => $patWeight,'patCC' => $patCC,'patHPI' => $patHPI,'patPMH' => $patPMH,'patFMH' => $patFMH, 'patScanImage' => $patScanImage,'scanPredictions' => $scanPredictions]);
     }
 }
