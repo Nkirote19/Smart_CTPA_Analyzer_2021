@@ -290,7 +290,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                     orderable: false,
                     render: function(data, type, full) {
                         return ` <div style="text-align:center!important;"><td style="width:190px ;text-align: center!important;">
-                            <button type="button" title="Edit" id="edit" class="btn btn-xs edit-btn custom-blue btn-orange details-button text-uppercase" onclick="window.location='{{ route('patient_record_details', '') }}/${data.patient_id}'">
+                            <button type="button" title="View Details" id="edit" class="btn btn-xs edit-btn text-white btn-orange details-button text-uppercase" onclick="window.location='{{ route('patient_record_details', '') }}/${data.patient_id}'">
                                 <i class="fas fa-user-edit"></i> <span class="hidden-mobile hidden-tablet">VIEW DETAILS</span>
                             </button>              
                         </td></div>`

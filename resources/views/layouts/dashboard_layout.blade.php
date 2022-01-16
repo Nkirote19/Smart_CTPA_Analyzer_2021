@@ -119,7 +119,7 @@
                             </div>
 
                             <div style="margin-top:15px;">
-                                <a class="nav-link btn btn-orange fw-800" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="far fa-arrow-alt-to-right p-1 fw-700"></i> {{ __('LOGOUT') }} </a>
+                                <a class="nav-link btn btn-orange text-white fw-800" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="far fa-arrow-alt-to-right p-1 fw-700"></i> {{ __('LOGOUT') }} </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>  

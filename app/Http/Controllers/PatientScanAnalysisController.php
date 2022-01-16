@@ -72,10 +72,27 @@ class PatientScanAnalysisController extends Controller
 
         $patScanImage = $patient->patient_image;
 
-        $scanPredictions = $patient->getSpecificPredictions;
-        $scanPredictions=array($scanPredictions);
-        // $scanPredictions=asort($scanPredictions);
+        // $scanPredictions = Prediction::find($id);
+        // return $scanPredictions;
 
-        return view('patient_record_details',['patient_id' => $patient->patient_id,'patSurname' => $patSurname,'patFname' => $patFname,'patOname' => $patOname, 'patGender' => $patGender, 'patAge' => $patAge, 'patWeight' => $patWeight,'patCC' => $patCC,'patHPI' => $patHPI,'patPMH' => $patPMH,'patFMH' => $patFMH, 'patScanImage' => $patScanImage,'scanPredictions' => $scanPredictions]);
+        // $scanPredictions = $patient->getSpecificPredictions;   
+
+        $Predictions = Prediction::findOrFail($id);
+        $acute_and_chronic_pe = $Predictions->acute_and_chronic_pe;
+        $central_pe = $Predictions->central_pe;
+        $chronic_pe = $Predictions->chronic_pe;
+        $flow_artifact = $Predictions->flow_artifact;
+        $indeterminate = $Predictions->indeterminate;
+        $leftsided_pe = $Predictions->leftsided_pe;
+        $negative_exam_for_pe = $Predictions->negative_exam_for_pe;
+        $pe_present_on_image = $Predictions->pe_present_on_image;
+        $qa_contrast = $Predictions->qa_contrast;
+        $qa_motion = $Predictions->qa_motion;
+        $rightsided_pe = $Predictions->rightsided_pe;
+        $rv_lv_ratio_gte_1= $Predictions->rv_lv_ratio_gte_1;
+        $rv_lv_ratio_lt_1 = $Predictions->rv_lv_ratio_lt_1;
+        $true_filling_defect_not_pe = $Predictions->true_filling_defect_not_pe;
+
+        return view('patient_record_details',['patient_id' => $patient->patient_id,'patSurname' => $patSurname,'patFname' => $patFname,'patOname' => $patOname, 'patGender' => $patGender, 'patAge' => $patAge, 'patWeight' => $patWeight,'patCC' => $patCC,'patHPI' => $patHPI,'patPMH' => $patPMH,'patFMH' => $patFMH, 'patScanImage' => $patScanImage, 'acute_and_chronic_pe' => $acute_and_chronic_pe,'central_pe' => $central_pe,'chronic_pe' => $chronic_pe,'flow_artifact' => $flow_artifact,'indeterminate' => $indeterminate,'leftsided_pe' => $leftsided_pe,'negative_exam_for_pe' => $negative_exam_for_pe,'pe_present_on_image' => $pe_present_on_image,'qa_contrast' => $qa_contrast,'qa_motion' => $qa_motion,'rightsided_pe' => $rightsided_pe ,'rv_lv_ratio_gte_1' => $rv_lv_ratio_gte_1,'rv_lv_ratio_lt_1' => $rv_lv_ratio_lt_1,'true_filling_defect_not_pe' => $true_filling_defect_not_pe]);
     }
 }

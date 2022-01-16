@@ -31,6 +31,23 @@
             <div class="card-body">
                This page displays the list of an individual patient's medical information inclusive of the predicted results. <br>
                To print the report, click on the '<i class="far fa-print p-1"></i>' icon at the top of this page.
+               <u><b>Class Definitions</b></u>
+                   <ul>
+                        <li><b>Acute and Chronic PE</b> - exam-level, indicates that the PE present in the study is both acute AND chronic</li>
+                        <li><b>Central PE</b> - exam-level, indicates that there is PE present in the center of the images in the study</li>
+                        <li><b>Chronic PE</b> - exam-level, indicates that the PE in the study is chronic</li>
+                        <li><b>Flow Artifact</b> - informational</li>
+                        <li><b>Indeterminate</b> -exam-level, indicates that while the study is not negative for PE, an ultimate set of exam-level labels could not be created, due to QA issues</li>
+                        <li><b>Leftsided PE</b> - exam-level, indicates that there is PE present on the left side of the images in the study</li>
+                        <li><b>Negative exam for PE</b> - exam-level, whether there are any images in the study that have PE present.</li>
+                        <li><b>PE present on Image</b> - image-level, notes whether any form of PE is present on the image.</li>
+                        <li><b>QA Contrast</b> - informational, indicates whether radiologists noted an issue with contrast in the study.</li>
+                        <li><b>QA Motion</b> - informational, indicates whether radiologists noted an issue with motion in the study.</li>
+                        <li><b>Rightsided PE</b> - exam-level, indicates that there is PE present on the right side of the images in the study</li> 
+                        <li><b>RV LV Ratio > 1</b> - exam-level, indicates whether the RV/LV ratio present in the study is >= 1</li>
+                        <li><b>RV LV Ratio < 1</b> - exam-level, indicates whether the RV/LV ratio present in the study is < 1</li>                                         
+                        <li><b>True Filling Defect not PE</b> - informational, indicates a defect that is NOT PE</li>        
+                   </ul>
             </div>
         </div>
     </div>
@@ -122,27 +139,93 @@
                                     <th>Probability (%)</th>
                                 </tr>
                                 </thead>
-
-                                 @forelse ($scanPredictions as $scanKey => $scanProbability)
+                                
                                 <tbody>
+                                {{--<!-- @forelse ($scanPredictions as $Key => $Value)                               
                                     <tr>
                                         <td class="text-center">{{$loop->iteration}}</td>
-                                        <td class="pl-2">{{ $scanKey }}</td>
-                                        <td class="text-center">{{ $scanProbability}}</td>
-                                    </tr>
-                                </tbody>
+                                        <td class="pl-2">{{ $Key }}</td>
+                                        <td class="text-center">{{ $Value}}</td>
+                                    </tr>                               
                                  @empty
-                                    <p>No predictions available</p>
-                                @endforelse
-
+                                    <p>No predictions available</p
+                                    >
+                                @endforelse  -->--}}
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="pl-2">Acute and Chronic PE</td>
+                                    <td class="text-center">{{ $acute_and_chronic_pe*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                 <tr>
+                                    <td class="text-center">2</td>
+                                    <td class="pl-2">Central PE</td>
+                                    <td class="text-center">{{ $central_pe*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                <tr>
+                                    <td class="text-center">3</td>
+                                    <td class="pl-2">Chronic PE</td>
+                                    <td class="text-center">{{ $chronic_pe*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                 <tr>
+                                    <td class="text-center">4</td>
+                                    <td class="pl-2">Flow Artifact</td>
+                                    <td class="text-center">{{ $flow_artifact*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                <tr>
+                                    <td class="text-center">5</td>
+                                    <td class="pl-2">Indeterminate</td>
+                                    <td class="text-center">{{ $indeterminate*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                 <tr>
+                                    <td class="text-center">6</td>
+                                    <td class="pl-2">Leftsided PE</td>
+                                    <td class="text-center">{{ $leftsided_pe*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                <tr>
+                                    <td class="text-center">7</td>
+                                    <td class="pl-2">Negative exam for PE</td>
+                                    <td class="text-center">{{ $negative_exam_for_pe*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                 <tr>
+                                    <td class="text-center">8</td>
+                                    <td class="pl-2">PE present on Image</td>
+                                    <td class="text-center">{{ $pe_present_on_image*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                <tr>
+                                    <td class="text-center">9</td>
+                                    <td class="pl-2">QA Contrast</td>
+                                    <td class="text-center">{{ $qa_contrast*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                 <tr>
+                                    <td class="text-center">10</td>
+                                    <td class="pl-2">QA Motion</td>
+                                    <td class="text-center">{{ $qa_motion*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                <tr>
+                                    <td class="text-center">11</td>
+                                    <td class="pl-2">Rightsided PE</td>
+                                    <td class="text-center">{{ $rightsided_pe*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                 <tr>
+                                    <td class="text-center">12</td>
+                                    <td class="pl-2">RV LV Ratio > 1</td>
+                                    <td class="text-center">{{ $rv_lv_ratio_gte_1*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                <tr>
+                                    <td class="text-center">13</td>
+                                    <td class="pl-2">RV LV Ratio < 1</td>
+                                    <td class="text-center">{{ $rv_lv_ratio_lt_1*100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                 <tr>
+                                    <td class="text-center">14</td>
+                                    <td class="pl-2">True Filling Defect not Pe </td>
+                                    <td class="text-center">{{ $true_filling_defect_not_pe *100 ?? 'Unavailable' }}</td>
+                                </tr> 
+                                </tbody>
                             </table>
                         </row>
                     </div>
                 </div>
-
-                <h4 class="custom-orange keep-print-font mt-3">
-                    <span class="fw-700 custom-blue">Compilation Date:</span> <span id="compilation_date">12/3/2021</span>
-                </h4>
 
                 <h4 class="custom-orange keep-print-font mt-3">
                     <span class="fw-700 custom-blue">Report by:</span> Dr. <span id="doctor_name">{{ Auth::user()->name }}</span>
