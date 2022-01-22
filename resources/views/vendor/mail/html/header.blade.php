@@ -5,7 +5,7 @@
 <img src="https://laravel.com/img/notification-logo.png" class="logo" alt="Laravel Logo">
 @else
 <!-- {{ $slot }} -->
-<img src="{{ asset('img/logo-v5.jpeg') }}"  class="logo"alt="Smart CTPA Analyzer Logo" />
+<img src="https://www.pngarts.com/files/6/Animated-Lungs-Transparent-Images.png" class="logo"alt="Smart CTPA Analyzer Logo" />
 @endif
 </a>
 </td>

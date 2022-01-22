@@ -39,14 +39,14 @@
                         TIP: The menu items are not auto translated. You must have a residing lang file associated with the menu saved inside dist/media/data with reference to each 'data-i18n' attribute.
                         -->
                         <ul id="js-nav-menu" class="nav-menu">
-                            <li class="active">
+                            <li class="{{ request()->is('scan_analysis') ? 'active' : '' }}">
                                 <a href="{{url('scan_analysis')}}" title="Scan Analysis">
                                     <i class="far fa-lungs"></i>
                                     <span class="nav-link-text">Scan Analysis</span>
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li class="{{ in_array(Route::currentRouteName(), ['patient_records', 'patient_record_details']) ? 'active' : '' }}">
                                 <a href="{{url('patient_records')}}" title="Patient Records">
                                     <i class="far fa-clipboard-list"></i>
                                     <span class="nav-link-text">Patient Records</span>
@@ -106,11 +106,11 @@
                         </div>
 
                         <div class="ml-auto d-flex">
-                            <div>
+                            <!-- <div>
                                 <a href="#" data-toggle="dropdown" title="Print Page" class="header-icon d-flex align-items-center justify-content-center ml-2" data-action="app-print">
                                     <i class="fas fa-print"></i>
                                 </a>
-                            </div>
+                            </div> -->
 
                             <div>
                                 <a href="#" data-toggle="dropdown" title="View Fullscreen" class="header-icon d-flex align-items-center justify-content-center ml-2" data-action="app-fullscreen">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePatientScanAnalysisModelsTable extends Migration
+class CreatePatientDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePatientScanAnalysisModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('patient_scan_analysis_models', function (Blueprint $table) {
+        Schema::create('patient_details', function (Blueprint $table) {
             $table->bigIncrements('patient_id');
             $table->string('patient_surname');
             $table->string('patient_fname');
             $table->string('patient_oname');
-            // $table->boolean('patient_gender');
             $table->string('patient_gender');
             $table->integer('patient_age');
             $table->float('patient_weight');
@@ -39,6 +38,6 @@ class CreatePatientScanAnalysisModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patient_scan_analysis_models');
+        Schema::dropIfExists('patient_details');
     }
 }

@@ -14,9 +14,7 @@
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <div class="form-group row">
-                    <label for="email" class="form-label custom-orange">{{ __('E-Mail Address') }}</label>
-
-                  
+                    <label for="email" class="form-label custom-orange">{{ __('E-Mail Address') }}</label>  
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
@@ -28,30 +26,25 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="password" class="form-label custom-orange">{{ __('Password') }}</label>
-
-                  
+                    <label for="password" class="form-label custom-orange">{{ __('Password') }}</label>               
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
-                  
+                        @enderror                 
                 </div>
 
                 <div class="form-group row">
-                    <label for="password-confirm" class="form-label custom-orange">{{ __('Confirm Password') }}</label>
-
-                    
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    <label for="password-confirm" class="form-label custom-orange">{{ __('Confirm Password') }}</label>                
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     
                 </div>
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-orange text-white mt-2 text-uppercase" style="width:150px; margin-left: -40px;">
+                        <button type="submit" class="btn btn-orange text-white mt-2 text-uppercase" style="width:180px; margin-left: -50px;">
                             <i class="fas fa-user-lock"></i> {{ __('Reset Password') }}
                         </button>
                     </div>

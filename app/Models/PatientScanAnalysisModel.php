@@ -35,11 +35,10 @@ use App\Models\Prediction;
  */
 class PatientScanAnalysisModel extends Model
 {
-	protected $table = 'patient_scan_analysis_models';
+	protected $table = 'patient_details';
 	protected $primaryKey = 'patient_id';
 
 	protected $casts = [
-		// 'patient_gender' => 'bool',
 		'patient_age' => 'int',
 		'patient_weight' => 'float'
 	];
@@ -62,9 +61,4 @@ class PatientScanAnalysisModel extends Model
 	{
 		return $this->hasMany(Prediction::class, 'patient_id');
 	}
-
-	// public function getSpecificPredictions()
-	// {
-	// 	return $this->hasMany(Prediction::class, 'patient_id')->select('acute_and_chronic_pe','central_pe','chronic_pe','flow_artifact','indeterminate','leftsided_pe','negative_exam_for_pe','pe_present_on_image','qa_contrast','qa_motion','rightsided_pe','rv_lv_ratio_gte_1','rv_lv_ratio_lt_1','true_filling_defect_not_pe');
-	// }
 }

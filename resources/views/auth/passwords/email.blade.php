@@ -21,17 +21,13 @@
                 @csrf
 
                 <div class="form-group row">
-                    <label for="email" class="form-label custom-orange">{{ __('E-Mail Address') }}</label>
-
-                    
+                    <label for="email" class="form-label custom-orange">{{ __('E-Mail Address') }}</label>           
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
-                
+                        @enderror                
                 </div>
 
                 <div class="form-group row mb-0">

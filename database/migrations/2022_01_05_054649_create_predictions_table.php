@@ -16,7 +16,7 @@ class CreatePredictionsTable extends Migration
         Schema::create('predictions', function (Blueprint $table) {
             $table->bigIncrements('prediction_id');
             $table->unsignedBigInteger('patient_id');
-            $table->foreign('patient_id')->references('patient_id')->on('patient_scan_analysis_models')->nullable();
+            $table->foreign('patient_id')->references('patient_id')->on('patient_details')->nullable();
 
             $table->float('acute_and_chronic_pe', 8, 6);
             $table->float('central_pe', 8,6); 

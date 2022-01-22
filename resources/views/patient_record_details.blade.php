@@ -30,7 +30,6 @@
         <div id="patient_records_details_guidelines" class="collapse" data-parent="#patient_records_details_page_guidelines">
             <div class="card-body">
                This page displays the list of an individual patient's medical information inclusive of the predicted results. <br>
-               To print the report, click on the '<i class="far fa-print p-1"></i>' icon at the top of this page.
                <u><b>Class Definitions</b></u>
                    <ul>
                         <li><b>Acute and Chronic PE</b> - exam-level, indicates that the PE present in the study is both acute AND chronic</li>

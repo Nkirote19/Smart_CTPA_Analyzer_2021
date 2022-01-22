@@ -63,15 +63,6 @@
 				        </thead>
 
 				        <tbody>
-				            <!-- <tr>
-				                <td>1</td>
-				                <td>Mutabari</td>
-				                <td>Fridah</td>
-				                <td>Nkirote</td>
-				                <td>Female</td>
-				                <td>21</td>
-				                <td>56</td>
-				            </tr> -->
 				        </tbody>
 				    </table>
 				</div>

@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Log;
+
 use Illuminate\Http\Client\Response;
+
 class PatientScanAnalysisController extends Controller
 {
     //
@@ -44,9 +46,6 @@ class PatientScanAnalysisController extends Controller
 
 
         return response()->json(["image_url" => url($path), "prediction" => $prediction->prediction_id], 200);
-
-        // return redirect()->back()->with('status','Patient Details Added Successfully');
-
         }
 
     public function retrieveAllRecords(){
@@ -71,11 +70,6 @@ class PatientScanAnalysisController extends Controller
         $patFMH = $patient->patient_familyMedicalHistory;
 
         $patScanImage = $patient->patient_image;
-
-        // $scanPredictions = Prediction::find($id);
-        // return $scanPredictions;
-
-        // $scanPredictions = $patient->getSpecificPredictions;   
 
         $Predictions = Prediction::findOrFail($id);
         $acute_and_chronic_pe = $Predictions->acute_and_chronic_pe;
